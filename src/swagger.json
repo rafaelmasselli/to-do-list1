@@ -1,0 +1,238 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API To-do-list",
+    "description": "API do To-do-lis",
+    "contact": {
+      "email": "rafaelmasselli0@gmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "",
+      "description": "API no Heroku"
+    },
+    {
+      "url": "http://localhost:3000",
+      "description": "API local"
+    }
+  ],
+  "paths": {
+    "/list": {
+      "get": {
+        "summary": "Listar todos as tarefas",
+        "description": "Rota responsável por listar todas as tarefas",
+        "tags": ["List"],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "201": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/list"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/list/{id}": {
+      "get": {
+        "summary": "Busca uma única tarefa ",
+        "description": "Rota responsável por buscar uma tarefa pelo ID",
+        "tags": ["List"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id de tarefa",
+            "required": true
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/List"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/list/create": {
+      "post": {
+        "summary": "Cadastrar uma novo tarefa",
+        "description": "Rota responsável por cadastrar uma nova tarefa",
+        "tags": ["List"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/List"
+              },
+              "examples": {
+                "List": {
+                  "value": {
+                    "title": "ir para a academia",
+                    "text": "levar munhequeira para o treino",
+                    "priority": "alta",
+                    "status": "a fazer",
+                    "deadline": "data limite"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/List"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/list/update/{id}": {
+      "patch": {
+        "summary": "Editar uma tarefa pelo ID",
+        "description": "Rota responsável por editar uma tarefa pelo ID",
+        "tags": ["List"],
+        "parameters": [
+          {
+            "name": "id",
+            "photo": "path",
+            "description": "Id de tarefa para editar",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/List"
+              },
+              "examples": {
+                "List": {
+                  "value": {
+                    "title": "ir para a academia",
+                    "text": "levar munhequeira para o treino",
+                    "priority": "alta",
+                    "status": "a fazer",
+                    "deadline": "data limite"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/List"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/list/delete/{id}": {
+      "delete": {
+        "summary": "Apagar uma tarefa pelo ID",
+        "description": "Rota responsável por apagar uma tarefa pelo ID",
+        "tags": ["List"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id de uma tarefa para deleção",
+            "required": true
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {},
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "photo": {
+            "type": "string"
+          }
+        }
+      },
+      "List": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "priority": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "deadline": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

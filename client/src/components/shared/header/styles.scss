@@ -1,0 +1,43 @@
+.header {
+  overflow: hidden;
+  background-color: black;
+  box-shadow: 5px 1px 5px black;
+  margin: 0 auto 0 auto;
+  color: white;
+  font-family: "Roboto", sans-serif, bold;
+
+  img {
+    max-width: 65px;
+    margin-left: 50px;
+  }
+
+  .header-left {
+    display: flex;
+  }
+
+  ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 50px;
+  }
+  li {
+    margin-left: 10px;
+    list-style-type: none;
+    font-size: 15px;
+    text-decoration: none;
+    color: white;
+  }
+
+  li:hover {
+    cursor: pointer;
+    color: #c9d1d3;
+    transition-duration: 1s;
+  }
+}
+
+.container-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

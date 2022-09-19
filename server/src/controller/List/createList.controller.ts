@@ -3,9 +3,9 @@ import { createListService } from "../../service/List/createList.service";
 
 class createListController {
   async handle(request: Request, response: Response) {
-    const { text, title, status, priority, deadline } = request.body;
+    const { text, title, states, priority, deadline } = request.body;
     return await new createListService()
-      .handle({ deadline, priority, status, text, title })
+      .handle({ deadline, priority, states, text, title })
       .then((res) => {
         return response.status(201).json({
           message: "Tarefa criada com sucesso",

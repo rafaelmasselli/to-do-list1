@@ -1,0 +1,8 @@
+export const THEME = {
+  BLACKPRIMARIO: "#363636",
+  BLACKSEGUNDARIO: "#474747",
+  REDPRIMARIO: "#e8175d",
+  REDSEGUNDARIO: "#cc527a",
+  CINZA: "#a8a7a7",
+  BLANCO: "#f7f7f7",
+};

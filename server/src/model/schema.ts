@@ -5,7 +5,7 @@ import bcrypt from "bcrypt";
 interface IList {
   title: string;
   text: string;
-  status: string;
+  states: string;
   priority: string;
   deadline: string;
 }
@@ -29,7 +29,7 @@ const list = new mongoose.Schema({
   title: { type: String, required: true },
   text: { type: String, required: true },
   priority: { type: String, required: true },
-  status: { type: String, required: true },
+  states: { type: String, required: true },
   deadline: { type: String },
   createList: { type: Date, default: Date.now },
 });

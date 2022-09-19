@@ -2,14 +2,14 @@ import { Request, Response, NextFunction } from "express";
 
 class validBodyList {
   handle(request: Request, response: Response, nextFunction: NextFunction) {
-    const { priority, status, text, title } = request.body;
+    const { priority, states, text, title } = request.body;
     if (!priority) {
       response.status(400).json({
         message: "O campo prioridade não pode estar vazia",
       });
     }
 
-    if (!status) {
+    if (!states) {
       response.status(400).json({
         message: "O campo status não pode estar vazia",
       });

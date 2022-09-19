@@ -24,8 +24,8 @@ export function RegisterList() {
   const [descriptionModal, setDescriptionModal] = useState("");
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
-  const [states, setStates] = useState("a");
-  const [priority, setPriority] = useState("a");
+  const [states, setStates] = useState("");
+  const [priority, setPriority] = useState("");
   const [deadline, setDeadline] = useState("");
 
   const data = {
@@ -47,6 +47,7 @@ export function RegisterList() {
   }
 
   async function handleSubmit(event: FormEvent) {
+    console.log(deadline);
     event.preventDefault();
     if (!title) {
       openModal();
@@ -56,6 +57,14 @@ export function RegisterList() {
       openModal();
       setTitleModal("Erro");
       setDescriptionModal("O campo data nao pode estar vazia");
+    } else if (!priority) {
+      openModal();
+      setTitleModal("Erro");
+      setDescriptionModal("O campo prioridade nao pode estar vazia");
+    } else if (!states) {
+      openModal();
+      setTitleModal("Erro");
+      setDescriptionModal("O campo status nao pode estar vazia");
     } else {
       await api
         .post("/list/create", data)
@@ -64,7 +73,7 @@ export function RegisterList() {
           setTitleModal("Sucesso");
           setDescriptionModal("Tarefa criada com sucesso");
         })
-        .catch((err) => {
+        .catch((err: any) => {
           console.log(err);
           openModal();
           setTitleModal("Erro");
@@ -101,25 +110,21 @@ export function RegisterList() {
           </div>
           <div className="container__input">
             <label htmlFor="States">Status</label>
-            <select
-              id="States"
+            <input
+              placeholder="Fazendo"
               onChange={(event) => setStates(event.target.value)}
-            >
-              <option value="A fazer">A fazer</option>
-              <option value="Fazendo">Fazendo</option>
-              <option value="Completo">Completo</option>
-            </select>
+              id="States"
+              type="text"
+            />
           </div>
           <div className="container__input">
             <label htmlFor="priority">Prioridades</label>
-            <select
-              id="priority"
+            <input
+              placeholder="Prioridade alta"
               onChange={(event) => setPriority(event.target.value)}
-            >
-              <option value="A fazer">Baixa</option>
-              <option value="Fazendo">Media</option>
-              <option value="Completo">Alta</option>
-            </select>
+              id="priority"
+              type="text"
+            />
           </div>
           <div className="container__input">
             <label htmlFor="date">Data para termina a tarefa</label>

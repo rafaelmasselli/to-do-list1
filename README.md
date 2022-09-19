@@ -44,7 +44,7 @@ $ yarn dev
 - [x] Node
 - [x] TypeScript
 - [x] MongoDb
-- [x] Swagge
+- [x] Swagger
 
 ### Front-end
 

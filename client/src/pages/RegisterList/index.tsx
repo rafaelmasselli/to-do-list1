@@ -1,27 +1,15 @@
-import Modal from "react-modal";
-
 import { api } from "../../lib/api";
 import { useState, FormEvent } from "react";
 
 import { Button } from "../../components/structure/Button";
 
 import "./styles.scss";
-import React from "react";
-
-const customStyles = {
-  content: {
-    top: "50%",
-    width: "350px",
-    height: "200px",
-    left: "50%",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-  },
-};
+import { ModalErr } from "../../components/structure/ModalErr";
 
 export function RegisterList() {
   const [titleModal, setTitleModal] = useState("");
   const [descriptionModal, setDescriptionModal] = useState("");
+
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const [states, setStates] = useState("");
@@ -36,66 +24,49 @@ export function RegisterList() {
     deadline: deadline,
   };
 
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [show, setShow] = useState(false);
 
-  function openModal() {
-    setIsOpen(true);
-  }
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
-  function closeModal() {
-    setIsOpen(false);
+  function AlertModal(title: string, description: string) {
+    handleShow();
+    setTitleModal(title);
+    setDescriptionModal(description);
   }
 
   async function handleSubmit(event: FormEvent) {
     console.log(deadline);
     event.preventDefault();
     if (!title) {
-      openModal();
-      setTitleModal("Erro");
-      setDescriptionModal("O campo titulo nao pode estar vazia");
+      AlertModal("Erro", "O campo titulo não pode estar vazia");
     } else if (!deadline) {
-      openModal();
-      setTitleModal("Erro");
-      setDescriptionModal("O campo data nao pode estar vazia");
+      AlertModal("Erro", "O campo data não pode estar vazia");
     } else if (!priority) {
-      openModal();
-      setTitleModal("Erro");
-      setDescriptionModal("O campo prioridade nao pode estar vazia");
+      AlertModal("Erro", "o campo prioridade não pode estar vazia");
     } else if (!states) {
-      openModal();
-      setTitleModal("Erro");
-      setDescriptionModal("O campo status nao pode estar vazia");
+      AlertModal("Erro", "O campo status não pode estar vazia");
     } else {
       await api
         .post("/list/create", data)
         .then(() => {
-          openModal();
-          setTitleModal("Sucesso");
-          setDescriptionModal("Tarefa criada com sucesso");
+          AlertModal("Sucesso", "Tarefa criada com sucesso");
         })
-        .catch((err: any) => {
+        .catch((err) => {
           console.log(err);
-          openModal();
-          setTitleModal("Erro");
-          setDescriptionModal("O campo data nao pode estar vazia");
+          AlertModal("Erro", "Erro inesperado tente novamente mais tarde");
         });
     }
   }
 
   return (
     <div className="container__register">
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Example Modal"
-      >
-        <div className="container__modal">
-          <h2>{titleModal}</h2>
-          <p>{descriptionModal}</p>
-          <button onClick={closeModal}>Sair</button>
-        </div>
-      </Modal>
+      <ModalErr
+        closeModal={handleClose}
+        descriptionModal={descriptionModal}
+        modalIsOpen={show}
+        titleModal={titleModal}
+      />
       <form onSubmit={handleSubmit}>
         <h1>Nova tarefa</h1>
         <div className="box__form">

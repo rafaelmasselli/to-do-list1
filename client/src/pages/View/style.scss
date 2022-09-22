@@ -1,6 +1,6 @@
 .card__view {
-  width: 40rem;
-  height: 30rem auto;
+  width: 42rem;
+  height: auto;
   margin: 30px;
   transition: 0.5s;
 
@@ -28,9 +28,13 @@
     border-radius: 100px;
     border: 3px solid white;
   }
+  h2 {
+    margin-bottom: 8px;
+  }
 
   h3 {
     font-size: 20px;
+    color: rgba(0, 0, 0, 0.5);
   }
 
   .header__card {
@@ -62,6 +66,143 @@
   width: 100%;
   text-align: center;
   height: 70px;
-  border-top: 1px solid black;
-  overflow:auto;
+  border-bottom: 1px solid black;
+  overflow: auto;
+}
+
+.button__closed {
+  .close {
+    margin-right: 10px;
+    overflow: hidden;
+    position: relative;
+    border: none;
+    padding: 0;
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    background: transparent;
+    color: white;
+    font: inherit;
+    text-indent: 100%;
+    cursor: pointer;
+
+    &:focus {
+      outline: solid 0 transparent;
+      box-shadow: 0 0 0 2px #8ed0f9;
+    }
+
+    &:hover {
+      background: red;
+    }
+
+    &:before,
+    &:after {
+      position: absolute;
+      top: 15%;
+      left: calc(50% - 0.0625em);
+      width: 0.125em;
+      height: 70%;
+      border-radius: 0.125em;
+      transform: rotate(45deg);
+      background: currentcolor;
+      content: "";
+    }
+
+    &:after {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+.container__btn {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  button {
+    margin: 10px;
+    transition: 1s;
+    cursor: pointer;
+    background: #000000;
+    color: white;
+    width: 200px;
+    height: 40px;
+    font-size: 15px;
+    border-radius: 10px;
+
+    &:hover {
+      transition: 1s;
+      background: white;
+      color: #000000;
+    }
+  }
+}
+
+.form__patch__list {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  .container__input {
+    width: 100%;
+    height: auto;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+
+    input,
+    select {
+      width: 100%;
+      height: 40px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      font-size: 20px;
+      text-align: center;
+    }
+  }
+
+  form {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+    width: 390px;
+    height: 625px;
+    background: white;
+    box-shadow: 1px 1px 10px 0.5px #888888;
+  }
+
+  .container__form {
+    display: flex;
+  }
+
+  .input__description {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .input__texterea {
+    margin-top: 10px;
+    width: 100%;
+    height: 90px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+}
+
+.container__modal {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    margin: 17px;
+  }
+  p {
+    margin-top: 0px;
+    font-size: 18px;
+  }
 }

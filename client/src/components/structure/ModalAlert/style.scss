@@ -1,0 +1,69 @@
+.container__modal__info {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    margin: 17px;
+  }
+  p {
+    margin-top: 0px;
+    font-size: 18px;
+  }
+}
+
+.container__btn__description {
+  display: flex;
+  justify-content: center;
+
+  button {
+    background: black;
+    color: white;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    font-size: 15px;
+    margin-top: 10px;
+    border-radius: 100px;
+    margin: 0px 5px;
+    margin-top: 20px;
+    transition: 1s;
+
+    &:hover {
+      background: white;
+      color: black;
+      cursor: pointer;
+      transition: 1s;
+    }
+  }
+}
+.container__text__model {
+  color:black h2 {
+    font-size: 100px;
+  }
+}
+
+.container__path__form {
+  justify-content: center;
+  align-items: center;
+}
+
+.btn__form__container {
+  button {
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    font-size: 15px;
+    background: black;
+    color: white;
+    border-radius: 10px;
+    &:hover {
+      transition: 1s;
+      background: white;
+      color: #000000;
+    }
+  }
+}

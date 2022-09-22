@@ -3,8 +3,23 @@ interface IList {
   title: string;
   text: string;
   priority?: string;
-  status: string;
+  states: string;
   createList?: string;
 }
 
-export type { IList };
+interface IModal {
+  modalIsOpen: boolean;
+  closeModal: () => void;
+  titleModal: string;
+  descriptionModal: any;
+  handleModal?: any;
+  Width?: string;
+  Height?: string;
+  Top?: string;
+  btnTitle?: string;
+  Form?: boolean;
+  HandleSubmit?: any;
+  Id?: string
+}
+
+export type { IList, IModal };

@@ -13,7 +13,6 @@ export function Home() {
       .get("/list")
       .then((res: any) => {
         setLists(res.data.result);
-        console.log(res);
       })
       .catch((err) => {
         console.log(err);
@@ -26,7 +25,7 @@ export function Home() {
           <CardLists
             key={res._id}
             _id={res._id}
-            status={res.status}
+            states={res.status}
             text={res.text}
             title={res.title}
             createList={res.createList}

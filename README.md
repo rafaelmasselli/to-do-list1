@@ -2,7 +2,7 @@
 
 ## 👽 Descrição
 
-### Projeto crud do todo list com o front-end(client) consumindo a api do back-end(server)
+### Um projeto todolist feito em ReactJS é uma aplicação web que permite aos usuários criar e gerenciar suas listas de tarefas pessoais. 
 
 ## Requisitos para iniciar o projeto
 
